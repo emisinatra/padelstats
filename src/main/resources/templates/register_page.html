@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png">
     <meta charset="UTF-8">
     <title>Register - PadelStats</title>
     <link rel="stylesheet" href="css/style.css">
@@ -8,7 +9,7 @@
 <body>
 <div class="login-box">
     <h2>Register</h2>
-    <form>
+    <form method="post" action="/register" th:object="${registerRequest}">
         <div class="user-box">
             <input type="text" name="Username" required="">
             <label>Username</label>
