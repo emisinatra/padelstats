@@ -53,10 +53,11 @@ De lo contrario, se devuelve una redirección a la página de inicio de sesión 
         return registeredUser == null ? "error_page" : "redirect:/login";
     }
     @PostMapping("/login")
-    public String login(@ModelAttribute UsersModel usersModel){
+    public String login(@ModelAttribute UsersModel usersModel, Model model){
         System.out.println("Register request: "+ usersModel);
         UsersModel authenticated = usersService.authenticate(usersModel.getLogin(), usersModel.getPassword());
         if(authenticated != null){
+            model.addAttribute("userLogin",authenticated.getLogin());
            return "personal_page";
         }else{
             return "error_page";

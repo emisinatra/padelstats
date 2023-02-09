@@ -26,6 +26,10 @@ public class UsersService {
     public UsersModel registerUsers(String login, String password, String email) {
         // Verificamos si login y password son nulos
         if(login == null && password == null){
+            if(usersRepository.findFirstByLogin(login).isPresent()){
+                System.out.println("Dublicate login");
+                return null;
+            }
             // Devolvemos null si es así
             return null;
         }else{
